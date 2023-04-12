@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -20,9 +21,14 @@ export const Container = styled.div`
 `;
 
 export const FormTitle = styled.h1`
-    font-size: 3rem;
+    width: 100%;
+    font-size: clamp(3rem, 25vw, 4rem);
     line-height: 1;
     /* text-align: center; */
+
+    @media screen and  (min-width: 520px){
+        width: 75%;
+    }
 `;
 
 export const FormTitleAccent = styled.span`
@@ -30,11 +36,13 @@ export const FormTitleAccent = styled.span`
 `;
 
 export const Form = styled.form`
-    /* margin-top: auto;
-    margin-bottom: auto; */
     width: 100%;
     display: flex;
     flex-direction: column;
+
+    @media screen and  (min-width: 520px){
+        width: 75%;
+    }
 `;
 
 // Pass prop to this button
@@ -58,7 +66,7 @@ export const SocialContainer = styled.div`
 
 `;
 
-export const Anchor = styled.a`
+export const Anchor = styled(Link)`
     display: inline-block;
     text-decoration: none;
     color: inherit;

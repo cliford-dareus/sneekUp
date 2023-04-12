@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Anchor,
   FlexContainer,
-  Form,
   FormTitle,
   FormTitleAccent,
   SocialContainer,
@@ -24,7 +23,7 @@ const index = () => {
     <FlexContainer>
       <LeftContainer>
         <FormTitle>
-          Welcome to <FormTitleAccent>Sneek</FormTitleAccent>{" "}
+          Welcome <br /> 2 <br /> <FormTitleAccent>Sneek</FormTitleAccent>{" "}
         </FormTitle>
 
         <PinForm
@@ -34,16 +33,16 @@ const index = () => {
           onPinChanged={onPinChanged}
         />
 
-        <ForgetPinLink href="">Forgot my Pin</ForgetPinLink>
+        <ForgetPinLink to="/register">Forgot my Pin</ForgetPinLink>
 
         <SocialContainer>
-          <Anchor href="">
+          <Anchor to="">
             <img src="" alt="" width="30" height="30" />
           </Anchor>
-          <Anchor href="">
+          <Anchor to="">
             <img src="" alt="" width="30" height="30" />
           </Anchor>
-          <Anchor href="">
+          <Anchor to="">
             <img src="" alt="" width="30" height="30" />
           </Anchor>
         </SocialContainer>

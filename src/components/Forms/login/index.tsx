@@ -97,7 +97,6 @@ const index: React.FC<PinType> = ({
       </InputGroup>
       <FormButton >Login</FormButton>
     </Form>
-    
   );
 };
 

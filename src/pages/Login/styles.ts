@@ -10,7 +10,7 @@ export const LeftContainer = styled(Container)`
     gap: 3em;
 
     @media screen and (min-width: 760px){
-        padding: 3em;
+        padding-inline: 5em;
     }
 `;
 
@@ -24,9 +24,16 @@ export const RigthContainer = styled(Container)`
 `;
 
 export const ForgetPinLink = styled(Anchor)`
+    width: 100%;
     color: purple;
-    align-self: flex-end;
+    text-align: right;
+    padding: 1em;
+  
     &:hover{
         color: whitesmoke;
+    }
+
+    @media screen and  (min-width: 520px){
+        width: 75%;
     }
 `;

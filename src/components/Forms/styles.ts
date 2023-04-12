@@ -12,14 +12,19 @@ export const InputGroup = styled.div`
 
 export const InputContainer = styled.div`
   width: 23%;
-  /* border: 1px solid red; */
+  aspect-ratio: 1;
   border-radius: 0.5em;
   overflow: hidden;
   background-color: whitesmoke;
+
+  @media screen and (min-width: 420px) {
+    aspect-ratio: 1/1;
+  }
 `;
 
 export const InputField = styled.input`
   width: 100%;
+  height: 100%;
   font-size: 1.5rem;
   font-weight: bold;
   padding: 0.9em;
@@ -32,5 +37,17 @@ export const InputField = styled.input`
 export const PinPromp = styled.p``;
 
 export const FormButton = styled(Button)`
-    margin-top: 1em;
+  margin-top: 1em;
+`;
+
+export const LabelField = styled.label``;
+
+export const InputAndLabelContainer = styled.div`
+  background-color: whitesmoke;
+`;
+
+export const InputAndLabelGroup = styled.div`
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
 `;
