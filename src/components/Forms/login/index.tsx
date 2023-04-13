@@ -1,6 +1,12 @@
 import React, { useRef } from "react";
 import { Button, Form } from "../../../pages/styled-components";
-import { FormButton, InputContainer, InputField, InputGroup, PinPromp } from "../styles";
+import {
+  FormButton,
+  InputContainer,
+  InputField,
+  InputGroup,
+  PinPromp,
+} from "../styles";
 import { removeValuesFromArray } from "../../../lib/PinHelper";
 import { PinTypeProps } from "../../../utils/types";
 
@@ -13,7 +19,7 @@ const index: React.FC<PinTypeProps> = ({
   pin,
   isValidating,
   onPinChanged,
-  onsubmit
+  onsubmit,
 }) => {
   const inputRefs = useRef<HTMLInputElement[]>([]);
 
@@ -72,9 +78,7 @@ const index: React.FC<PinTypeProps> = ({
       <PinPromp>Enter your Pin.</PinPromp>
       <InputGroup>
         {Array.from({ length: pinLength }, (_, index) => (
-          <InputContainer
-            key={index}
-          >
+          <InputContainer key={index}>
             <InputField
               disabled={isValidating}
               ref={(el) => {

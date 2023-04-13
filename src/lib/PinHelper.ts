@@ -39,3 +39,7 @@ export class PinServices implements PinType {
 }
 
 export const Pin = new PinServices();
+
+export const timeout = (delay: number) => {
+  return new Promise((res) => setTimeout(res, delay));
+};

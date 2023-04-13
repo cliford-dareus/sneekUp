@@ -7,13 +7,18 @@ import {
 import { ForgetPinLink, LeftContainer, RigthContainer } from "./styles";
 import PinForm from "../../components/Forms/login";
 import SocialGroup from "../../components/SocialGroup";
-import { Pin } from "../../lib/PinHelper";
+import { Pin, timeout } from "../../lib/PinHelper";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { RootState } from "../../app/store";
+import { login } from "../../features/userSlice";
 
 const index = () => {
   const Navigate = useNavigate();
   const [pin, setPin] = useState<Array<number | undefined>>(new Array(4));
   const [isValidating, setIsValidating] = useState<boolean>(false);
+  const user = useAppSelector((state: RootState) => state.user);
+  const dispatch = useAppDispatch();
 
   const onPinChanged = (pinEntry: number | undefined, index: number) => {
     const newPin = [...pin];
@@ -21,9 +26,9 @@ const index = () => {
     setPin(newPin);
   };
 
-  const onsubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onsubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const storedPin = Pin.get("fakename");
+    const storedPin = user?.pin;
     const pinEntered = Number(pin.join(""));
 
     if (!pinEntered) {
@@ -31,25 +36,24 @@ const index = () => {
     }
 
     try {
-      if (Number(storedPin?.pin) === pinEntered) {
+      if (Number(storedPin) === pinEntered) {
         setIsValidating(true);
-        Pin.login()
-        setPin([])
-        // return;
+        await timeout(5000);
+        dispatch(login());
+        Navigate("/");
+        setPin([]);
+      } else {
+        console.log("failed");
       }
     } catch (error) {}
   };
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsValidating(false);
-      Navigate('/')
-    }, 5000);
-
-    return ()=> {
-      clearTimeout(timeout);
+    const storedPin = Pin.get("fakename");
+    if (storedPin.isloggin) {
+      Navigate("/");
     }
-  }, [isValidating]);
+  }, []);
 
   return (
     <FlexContainer>

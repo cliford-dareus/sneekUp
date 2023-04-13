@@ -10,10 +10,13 @@ import {
 import { UserType } from "../../../pages/Register";
 import { Pin } from "../../../lib/PinHelper";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { register } from '../../../features/userSlice';
 
 const PIN_MAX_LENGHT = 4;
 
 const index = () => {
+  const dispatch = useAppDispatch();
   const Navigate = useNavigate()
   const [userInfo, setUserInfo] = useState<UserType>({
     username: "",
@@ -37,8 +40,8 @@ const index = () => {
     }
 
     try {
-      const pinCreated = Pin.create(username, Number(pin));
-      console.log(pinCreated)
+      const payload = {username, pin: Number(pin)}
+      dispatch(register(payload));
       setUserInfo({ username: "", pin: "" });
       Navigate('/login');
     } catch (error) {
