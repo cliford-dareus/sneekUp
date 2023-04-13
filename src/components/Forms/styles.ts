@@ -44,10 +44,22 @@ export const LabelField = styled.label``;
 
 export const InputAndLabelContainer = styled.div`
   background-color: whitesmoke;
+  border-radius: .5em;
+  overflow: hidden;
 `;
 
 export const InputAndLabelGroup = styled.div`
   display: flex;
   gap: 1em;
   flex-direction: column;
+  margin-top: 1em;
+`;
+
+export const RegisterInput = styled(InputField)`
+  width: 80%;
+  height: 100%;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: .9em;
+  text-align: left;
 `;

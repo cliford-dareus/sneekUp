@@ -1,11 +1,11 @@
 import { PropsWithChildren } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { Pin } from "../lib/PinHelper";
 
 const ProtectedRoutes = ({ children, ...rest }: PropsWithChildren) => {
-    // const user = getUserFromLocalStorage();
+  const user = Pin.get("fakename").isloggin;
 
-  // const user = useAppSelector((state) => state.user.isSuccess);
-  return 0 ? <Outlet /> : <Navigate to="/login" />;
-}
+  return user ? <Outlet /> : <Navigate to="/login" />;
+};
 
-export default ProtectedRoutes
+export default ProtectedRoutes;

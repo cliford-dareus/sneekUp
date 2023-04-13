@@ -2,24 +2,18 @@ import React, { useRef } from "react";
 import { Button, Form } from "../../../pages/styled-components";
 import { FormButton, InputContainer, InputField, InputGroup, PinPromp } from "../styles";
 import { removeValuesFromArray } from "../../../lib/PinHelper";
-
-type PinType = {
-  pinLength: number;
-  pin: Array<number | undefined>;
-  onPinChanged: (pinEntry: number | undefined, index: number) => void;
-  isValidating: boolean;
-};
+import { PinTypeProps } from "../../../utils/types";
 
 const PIN_MIN_VALUE = 0;
 const PIN_MAX_VALUE = 9;
 const BACKSPACE_KEY = "Backspace";
 
-const index: React.FC<PinType> = ({
+const index: React.FC<PinTypeProps> = ({
   pinLength,
   pin,
   isValidating,
   onPinChanged,
-  //   changePinFocus,
+  onsubmit
 }) => {
   const inputRefs = useRef<HTMLInputElement[]>([]);
 
@@ -74,7 +68,7 @@ const index: React.FC<PinType> = ({
   };
 
   return (
-    <Form>
+    <Form onSubmit={(e) => onsubmit(e)}>
       <PinPromp>Enter your Pin.</PinPromp>
       <InputGroup>
         {Array.from({ length: pinLength }, (_, index) => (
@@ -95,7 +89,7 @@ const index: React.FC<PinType> = ({
           </InputContainer>
         ))}
       </InputGroup>
-      <FormButton >Login</FormButton>
+      <FormButton>Login</FormButton>
     </Form>
   );
 };
