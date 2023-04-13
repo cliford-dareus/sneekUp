@@ -36,6 +36,22 @@ export class PinServices implements PinType {
     const loginUser = { ...alreadyExist, isloggin: true };
     localStorage.setItem(fakename, JSON.stringify(loginUser));
   }
+
+  logout(){
+    const alreadyExist = this.get(fakename);
+    if (alreadyExist?.length === 0) {
+      return { msg: "Created an Account to login..." };
+    }
+    const logoutUser = { ...alreadyExist, isloggin: false };
+    localStorage.setItem(fakename, JSON.stringify(logoutUser));
+  }
+
+  getInactiveTime(){
+    const date = JSON.parse(localStorage.getItem('_expiredTime')!);
+    const formatesDate = new Date(date).getTime();
+    return formatesDate;
+  }
+  
 }
 
 export const Pin = new PinServices();
@@ -43,3 +59,4 @@ export const Pin = new PinServices();
 export const timeout = (delay: number) => {
   return new Promise((res) => setTimeout(res, delay));
 };
+

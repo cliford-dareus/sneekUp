@@ -50,6 +50,7 @@ const index = () => {
 
   useEffect(() => {
     const storedPin = Pin.get("fakename");
+    
     if (storedPin.isloggin) {
       Navigate("/");
     }

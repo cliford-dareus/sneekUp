@@ -26,10 +26,14 @@ export const userSlice = createSlice({
       state.isloggin = true;
       Pin.login();
     },
+    logout: (state) => {
+      state.isloggin = false;
+      Pin.logout()
+    }
   },
 });
 
-export const { register, login } = userSlice.actions;
+export const { register, login, logout } = userSlice.actions;
 export const selectUser = (state: RootState) => state.user;
 
 export default userSlice.reducer;

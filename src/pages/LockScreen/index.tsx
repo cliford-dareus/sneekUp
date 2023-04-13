@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const index = () => {
-  return (
-    <div>LockScreen</div>
-  )
-}
+  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    const timeInterval = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
 
-export default index
+    return () => {
+      clearInterval(timeInterval);
+    };
+  }, []);
+
+  return (
+    <div>
+      LockScreen
+      <h1>{date.toLocaleTimeString()}</h1>
+      <Link to="/login">Login</Link>
+    </div>
+  );
+};
+
+export default index;
