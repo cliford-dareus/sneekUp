@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { MainContainer } from './utils/styles/globalStyles';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import Login from './pages/Login';
@@ -13,6 +13,7 @@ import { logout } from './features/userSlice';
 function App() {
   const [ isTimer, setIsTimer ] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+  const Navigate = useNavigate();
 
   useEffect(()=> {
     const timer = new IdleTimer({
@@ -36,7 +37,9 @@ function App() {
       dispatch(logout())
       setIsTimer(false)
       localStorage.removeItem("_expiredTime");
-      console.log('logout')
+      if(isTimer === Boolean('false')){
+        Navigate('/lockscreen')
+      }
     }
   }, [isTimer])
 

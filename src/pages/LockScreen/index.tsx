@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { LockScreen, LockScreenLoginBtn, LockScreenTime } from "./styles";
+import useGetTime from "../../hooks/useGetTime";
 
 const index = () => {
-  const [date, setDate] = useState(new Date());
-  useEffect(() => {
-    const timeInterval = setInterval(() => {
-      setDate(new Date());
-    }, 1000);
-
-    return () => {
-      clearInterval(timeInterval);
-    };
-  }, []);
+  const time  = useGetTime();
 
   return (
-    <div>
-      LockScreen
-      <h1>{date.toLocaleTimeString()}</h1>
-      <Link to="/login">Login</Link>
-    </div>
+    <LockScreen>
+      <LockScreenTime>
+        <span>{time}</span>
+      </LockScreenTime>
+
+      <div>
+        <h1>Weather Api</h1>
+      </div>
+
+      <LockScreenLoginBtn to="/login">Login</LockScreenLoginBtn>
+    </LockScreen>
   );
 };
 
