@@ -13,6 +13,12 @@ export const Section = styled.section`
   padding: 1em;
 `;
 
+export const SectionTitle = styled.h2`
+  /* width: min-content; */
+  font-size: 2rem;
+  line-height: 1;
+`;
+
 export const FlexContainer = styled.div`
   display: flex;
   width: 100%;

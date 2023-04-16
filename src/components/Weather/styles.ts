@@ -11,10 +11,10 @@ export const WeatherSection = styled(Section)`
   height: auto;
 
   @media screen and (min-width: 800px) {
-    height: 100vh;
+    /* height: 100vh; */
     flex-direction: row;
     padding-top: 17em;
-    height: calc(100vh - 5.5em);
+    /* height: calc(100vh - 5.5em); */
     /* height: 100vh; */
   }
 `;

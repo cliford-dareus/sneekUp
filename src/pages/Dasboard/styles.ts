@@ -12,6 +12,9 @@ export const DashboardHeader = styled.header`
 
 export const Icon = styled.span`
   font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const DashboardContainer = styled(PageContainer)`
