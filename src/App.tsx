@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { MainContainer } from "./utils/styles/globalStyles";
+import { GlobalStyle, MainContainer } from "./utils/styles/globalStyles";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -34,27 +34,30 @@ function App() {
 
   useEffect(() => {
     if (isTimer) {
-      dispatch(logout());
-      setIsTimer(false);
-      localStorage.removeItem("_expiredTime");
+      // dispatch(logout());
+      // setIsTimer(false);
+      // localStorage.removeItem("_expiredTime");
       if (isTimer === Boolean("false")) {
-        Navigate("/lockscreen");
+        // Navigate("/lockscreen");
       }
     }
   }, [isTimer]);
 
   return (
-    <MainContainer>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/lockscreen" element={<LockScreen />} />
-        <Route element={<ProtectedRoutes />}>
-          {/* Add a Layout for navbar */}
-          <Route path="/" element={<Dashboard />} />
-        </Route>
-      </Routes>
-    </MainContainer>
+    <>
+      <GlobalStyle />
+      <MainContainer>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/lockscreen" element={<LockScreen />} />
+          <Route element={<ProtectedRoutes />}>
+            {/* Add a Layout for navbar */}
+            <Route path="/" element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </MainContainer>
+    </>
   );
 }
 

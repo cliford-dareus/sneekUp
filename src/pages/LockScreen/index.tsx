@@ -24,7 +24,7 @@ const index = () => {
 
       <LockScreenWeatherContainer>
         <CloudIcon
-          style={{ color: "whitesmoke", width: "5em", height: "5em" }}
+          style={{ color: "whitesmoke", width: "1.5em", height: "1.5em" }}
         />
         <p>30</p>
         <span>.</span>

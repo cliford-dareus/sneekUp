@@ -20,47 +20,49 @@ export const LockScreenTime = styled.div`
   align-items: center;
   span {
     display: block;
-    font-size: clamp(9em, 20vw, 10rem);
+    font-size: clamp(12em, 20vw, 15rem);
     font-weight: 900;
     line-height: 1;
     &:nth-of-type(3) {
-      font-size: 4rem;
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const LockScreenLoginBtn = styled(Link)`
   position: absolute;
-  padding: 0.5em 1.5em;
+  padding: 0.5em 2em;
   border-radius: 2em;
   bottom: 3em;
   background-color: purple;
-  /* color: whitesmoke; */
   display: flex;
   justify-content: center;
   align-items: center;
   width: 6em;
-  height: 3em;
+  height: 2.5em;
 `;
 
 export const LockScreenWeatherContainer = styled.div`
   display: flex;
   align-items: center;
+  /* gap: 0.5em; */
   margin-top: 1em;
 
   p {
-    font-size: 5em;
+    font-size: 1.5em;
+    margin-left: .2em;
+    font-weight: bold;
   }
 
   span {
-    width: 20px;
-    aspect-ratio: 1;
+    width: 10px;
+    height: 10px;
     border-radius: 100%;
     background-color: transparent;
     align-self: flex-start;
-    margin-top: 1em;
-    -webkit-box-shadow: inset 0px 0px 0px 5px white;
-    -moz-box-shadow: inset 0px 0px 0px 5px white;
-    box-shadow: inset 0px 0px 0px 5px white;
+    margin-top: 0.2em;
+    -webkit-box-shadow: inset 0px 0px 0px 2.5px white;
+    -moz-box-shadow: inset 0px 0px 0px 2.5px white;
+    box-shadow: inset 0px 0px 0px 2.5px white;
   }
 `;

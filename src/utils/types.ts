@@ -16,3 +16,10 @@ export type UserType = {
     pin: number | null;
     isloggin: boolean | false;
 }
+
+export type TimeType = {
+  hour: string;
+  munites:string;
+  session: string;
+  day: string;
+}

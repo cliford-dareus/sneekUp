@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { TimeType } from "../utils/types";
 
-const useGetTime = () => {
-  const [time, setTime] = useState({
+const useGetTime = (): TimeType => {
+  const [time, setTime] = useState<TimeType>({
     hour: "",
     munites: "",
     session: "",
+    day: ''
   });
 
   const formatTime = (date: Date) => {
     let hh = date.getHours();
     let mm = date.getMinutes();
     let session = "AM";
+    let day = date.toDateString();
 
     if (hh == 0) {
       hh = 12;
@@ -20,10 +23,7 @@ const useGetTime = () => {
       session = "PM";
     }
 
-    hh = hh < 10 ? Number("0") + hh : hh;
-    mm = mm < 10 ? Number("0") + mm : mm;
-
-    return { hh, mm, session };
+    return {hh, mm, session, day };
   };
 
   useEffect(() => {
@@ -32,9 +32,10 @@ const useGetTime = () => {
       const fTime = formatTime(date);
       setTime({
         ...time,
-        hour: String(fTime.hh),
-        munites: String(fTime.mm),
+        hour: fTime.hh < 10 ? "0" + String(fTime.hh) : String(fTime.hh),
+        munites: fTime.mm < 10 ? "0" + String(fTime.mm) : String(fTime.mm),
         session: fTime.session,
+        day: fTime.day
       });
     }, 1000);
 
@@ -47,3 +48,4 @@ const useGetTime = () => {
 };
 
 export default useGetTime;
+export type Time = ReturnType <typeof useGetTime>;
