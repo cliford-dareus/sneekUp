@@ -29,6 +29,7 @@ export const DestinationFilterTop = styled.div`
 
 export const DestinationFilterButtonContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 0.3em;
 `;
 

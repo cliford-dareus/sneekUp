@@ -11,22 +11,32 @@ import {
 import { Button, SectionTitle } from "../../pages/styled-components";
 import { BsFilter } from "react-icons/bs";
 import { Icon } from "../../pages/Dasboard/styles";
-import Destination from "../../assets/bahamas.jpg";
-import Destination1 from "../../assets/ibiza.jpg";
 import { DestinationType, destinations } from "../../utils/data/Destination";
 
-const filters = ["Tropical", "Dry", "Temperate", "Continental", "Polar"];
+const filters = ["tropical", "Dry", "Temperate", "Continental", "Polar", "luxury", "family", "amusment-park"];
 
 const index = () => {
   const [isOpen, setIsOPen] = useState<boolean>(false);
   const [filtered, setFiltered] = useState<string[]>([]);
   const [filteredDestination, setFilterDestination] = useState<any>([]);
 
-  const filterDestination = (id: string) => {
-    
+  const filterDestination = () => {
+    const addFilters = destinations.filter((destination) => {
+        const d = destination.tags.filter(tag => filtered.includes(tag))
+        return d.length !== 0
+    })
+
+    setFilterDestination(addFilters)
   };
 
-  console.log(filteredDestination)
+  useEffect(() => {
+    if (filtered.length === 0) {
+      setFilterDestination(destinations);
+      return
+    }
+
+    filterDestination()
+  }, [filtered]);
 
   return (
     <DestinationContainer>
