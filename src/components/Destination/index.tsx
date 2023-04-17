@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DestinationCard,
   DestinationCardContainer,
@@ -13,10 +13,21 @@ import { BsFilter } from "react-icons/bs";
 import { Icon } from "../../pages/Dasboard/styles";
 import Destination from "../../assets/bahamas.jpg";
 import Destination1 from "../../assets/ibiza.jpg";
+import { DestinationType, destinations } from "../../utils/data/Destination";
+
+const filters = ["Tropical", "Dry", "Temperate", "Continental", "Polar"];
 
 const index = () => {
-    const [ isOpen, setIsOPen ] = useState<boolean>(false);
+  const [isOpen, setIsOPen] = useState<boolean>(false);
+  const [filtered, setFiltered] = useState<string[]>([]);
+  const [filteredDestination, setFilterDestination] = useState<any>([]);
+
+  const filterDestination = (id: string) => {
     
+  };
+
+  console.log(filteredDestination)
+
   return (
     <DestinationContainer>
       <SectionTitle>
@@ -27,8 +38,9 @@ const index = () => {
         <DestinationFilterTop>
           <DestinationFilterButtonContainer>
             <FilterButton>All</FilterButton>
-            <FilterButton>Topical</FilterButton>
-            <FilterButton>Bahamas</FilterButton>
+            {filtered.map((filter) => (
+              <FilterButton>{filter}</FilterButton>
+            ))}
           </DestinationFilterButtonContainer>
 
           <Icon onClick={() => setIsOPen(!isOpen)}>
@@ -36,35 +48,30 @@ const index = () => {
           </Icon>
         </DestinationFilterTop>
 
-        <div>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, vitae.
-        </div>
+        <DestinationFilterButtonContainer>
+          {filters.map((filter) => {
+            return (
+              <FilterButton
+                onClick={() => setFiltered((prev) => [...prev, filter])}
+              >
+                {filter}
+              </FilterButton>
+            );
+          })}
+        </DestinationFilterButtonContainer>
       </DestinationFilter>
 
       <DestinationCardContainer>
-        <DestinationCard>
-          <img src={Destination} alt="" />
-          <div>
-            <h3>Bahamas</h3>
-            <p>$500</p>
-          </div>
-        </DestinationCard>
-
-        <DestinationCard>
-          <img src={Destination1} alt="" />
-          <div>
-            <h3>Ibiza</h3>
-            <p>$200</p>
-          </div>
-        </DestinationCard>
-
-        <DestinationCard>
-          <img src={Destination1} alt="" />
-          <div>
-            <h3>Ibiza</h3>
-            <p>$200</p>
-          </div>
-        </DestinationCard>
+        {filteredDestination.map((destination: any) => (
+          <DestinationCard key={destination.id}>
+            <img src={destination.image} alt="" />
+            <div>
+              <h3>{destination.name}</h3>
+              <p>{destination.country}</p>
+              <p>${destination.price}</p>
+            </div>
+          </DestinationCard>
+        ))}
       </DestinationCardContainer>
     </DestinationContainer>
   );

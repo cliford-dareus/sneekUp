@@ -3,18 +3,19 @@ import { Button, Section } from "../../pages/styled-components";
 
 export const DestinationContainer = styled(Section)`
   height: auto;
+  margin-top: 1em;
 `;
 
 interface FilterProps {
-    readonly isOpen: boolean;
-  }
+  readonly isOpen: boolean;
+}
 
 export const DestinationFilter = styled.div<FilterProps>`
   display: flex;
   flex-direction: column;
   overflow: hidden;
   margin-top: 1em;
-  height: ${(props) => props.isOpen? '150px': '40px'};
+  height: ${(props) => (props.isOpen ? "150px" : "40px")};
 `;
 
 export const DestinationFilterTop = styled.div`
@@ -23,6 +24,7 @@ export const DestinationFilterTop = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0.5em;
 `;
 
 export const DestinationFilterButtonContainer = styled.div`
