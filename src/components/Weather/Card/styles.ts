@@ -79,10 +79,17 @@ export const CardMiddle = styled.div`
 `;
 
 export const CardIcon = styled(Icon)`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 5rem;
-  color: orange;
+  width: 90px;
+  height: 80px;
+  /* background-color: red; */
+  position: relative;
+
+  img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: none;
+  }
 `;

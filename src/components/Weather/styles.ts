@@ -68,13 +68,14 @@ export const WeatherContainer = styled.div`
 
 export const WeatherIcon = styled(Icon)`
   position: absolute;
+  width: 150px;
   top: 0.2em;
   right: 0.2em;
-  font-size: 6rem;
-  color: greenyellow;
 
   @media screen and (min-width: 800px) {
     top: 0;
+    width: 200px;
+    object-fit: cover;
     font-size: clamp(9rem, 20vw, 14rem);
   }
 `;

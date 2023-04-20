@@ -15,19 +15,33 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { WiDegrees, WiStrongWind } from "react-icons/wi";
 import { Icon } from "../../../pages/Dasboard/styles";
 
-const index = () => {
+const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+const index = ({ forecast, index }: { forecast: any; index: number }) => {
+  const dayInAWeek = new Date().getDay();
+  const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(
+    WEEK_DAYS.slice(0, dayInAWeek)
+  );
+  console.log(forecast);
+
   return (
     <CardSlide>
       <CardTop>
         <CardCityName>Miami</CardCityName>
-        <CardDay>Mon</CardDay>
+        <CardDay>{forecastDays[index]}</CardDay>
       </CardTop>
 
       <CardMiddle>
         <CardIcon>
-          <TiWeatherPartlySunny />
+          {/* <TiWeatherPartlySunny /> */}
+          <img
+            // alt="weather"
+            className="weather-icon"
+            src={`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`}
+            width="80px"
+          />
         </CardIcon>
-        <span>Strong Rain</span>
+        <span>{forecast.weather[0].description}</span>
       </CardMiddle>
 
       <CardBottom>
@@ -36,7 +50,7 @@ const index = () => {
             <Icon>
               <WiStrongWind />
             </Icon>
-            <span>21km/h</span>
+            <span>{Math.round(forecast.wind.speed)}km/h</span>
           </CardBottomInfoContainer>
           <CardBottomInfoContainer>
             <Icon>
@@ -48,7 +62,7 @@ const index = () => {
 
         <CardBottomWeather>
           <span>
-            23
+            {Math.round(forecast.main.temp)}
             <Icon>
               <WiDegrees />
             </Icon>

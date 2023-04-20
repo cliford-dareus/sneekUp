@@ -1,4 +1,5 @@
 import Bahamas from "../../assets/bahamas.jpg";
+import Ibiza from '../../assets/ibiza.jpg';
 
 export const destinations = [
   {
@@ -14,7 +15,7 @@ export const destinations = [
   {
     id: "des_2",
     name: "Ibiza Land",
-    image: Bahamas,
+    image: Ibiza,
     city: "",
     country: "Spain",
     price: 600,

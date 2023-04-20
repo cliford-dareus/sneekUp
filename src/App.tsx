@@ -9,11 +9,17 @@ import LockScreen from "./pages/LockScreen";
 import IdleTimer from "./lib/timer";
 import { useAppDispatch } from "./app/hooks";
 import { logout } from "./features/userSlice";
+import { useGetForcastsQuery, useGetWeatherQuery } from "./features/weatherApi";
 
 function App() {
   const [isTimer, setIsTimer] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const Navigate = useNavigate();
+  const { data: weather } = useGetWeatherQuery({ lat: "25.76", lon: "-80.19" });
+  const { data: forecasts } = useGetForcastsQuery({
+    lat: "25.76",
+    lon: "-80.19",
+  });
 
   useEffect(() => {
     const timer = new IdleTimer({
@@ -34,11 +40,7 @@ function App() {
 
   useEffect(() => {
     if (isTimer) {
-      // dispatch(logout());
-      // setIsTimer(false);
-      // localStorage.removeItem("_expiredTime");
       if (isTimer === Boolean("false")) {
-        // Navigate("/lockscreen");
       }
     }
   }, [isTimer]);
@@ -50,10 +52,13 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/lockscreen" element={<LockScreen />} />
+          <Route path="/lockscreen" element={<LockScreen data={weather} />} />
           <Route element={<ProtectedRoutes />}>
             {/* Add a Layout for navbar */}
-            <Route path="/" element={<Dashboard />} />
+            <Route
+              path="/"
+              element={<Dashboard data={weather} forecasts={forecasts} />}
+            />
           </Route>
         </Routes>
       </MainContainer>

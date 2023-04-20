@@ -11,7 +11,7 @@ import {
   CloudIcon,
 } from "@heroicons/react/24/solid";
 
-const index = () => {
+const index = ({ data }: { data: any }) => {
   const time = useGetTime();
 
   return (
@@ -26,7 +26,7 @@ const index = () => {
         <CloudIcon
           style={{ color: "whitesmoke", width: "1.5em", height: "1.5em" }}
         />
-        <p>30</p>
+        <p>{Math.round(data?.main.temp)}</p>
         <span>.</span>
       </LockScreenWeatherContainer>
 

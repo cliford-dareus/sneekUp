@@ -15,8 +15,17 @@ import { WiDaySnowWind, WiDegrees } from "react-icons/wi";
 import { Time } from "../../hooks/useGetTime";
 import Card from "./Card";
 import { motion } from "framer-motion";
+import { useGetForcastsQuery } from "../../features/weatherApi";
 
-const index = ({ time }: { time: Time }) => {
+const index = ({
+  time,
+  data,
+  forecasts,
+}: {
+  time: Time;
+  data: any;
+  forecasts: any;
+}) => {
   const [width, setWidth] = useState<number>(0);
   const carouselRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -24,18 +33,25 @@ const index = ({ time }: { time: Time }) => {
     setWidth(
       carouselRef.current?.scrollWidth! - carouselRef.current?.offsetWidth!
     );
-  }, []);
+  }, [forecasts]);
 
   return (
     <WeatherSection>
       <DashboardWeatherContainer>
+        <p>{data?.name}</p>
         <WeatherContainer>
           <WeatherIcon>
-            <WiDaySnowWind />
+            {/* <WiDaySnowWind /> */}
+            <img
+              // alt="weather"
+              width="100%"
+              className="weather-icon"
+              src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+            />
           </WeatherIcon>
 
           <WeatherInfo>
-            <span>23</span>
+            <span>{Math.round(data?.main.temp)}°</span>
             <WiDegrees />
           </WeatherInfo>
         </WeatherContainer>
@@ -56,10 +72,12 @@ const index = ({ time }: { time: Time }) => {
             drag="x"
             dragConstraints={{ right: 0, left: -width }}
           >
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {forecasts?.list.length > 0 &&
+              forecasts?.list
+                ?.slice(0, 7)
+                .map((forecast: any, index: number) => {
+                  return <Card forecast={forecast} index={index} />;
+                })}
           </SliderInnerContainer>
         </SliderContainer>
       </DashboardWeatherSlideContainer>

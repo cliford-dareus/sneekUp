@@ -5,7 +5,7 @@ import { DashboardContainer, DashboardHeader, Icon } from "./styles";
 import useGetTime from "../../hooks/useGetTime";
 import { RiMenu4Line } from "react-icons/ri";
 
-const index = () => {
+const index = ({data, forecasts}: {data: any, forecasts: any}) => {
   const time = useGetTime();
 
   return (
@@ -16,9 +16,9 @@ const index = () => {
           <RiMenu4Line />
         </Icon>
         {/* Maybe add a Music player in the header */}
-      </DashboardHeader>
+      </DashboardHeader >
 
-      <WeatherSection time={time} />
+      <WeatherSection time={time} data={data} forecasts={forecasts}/>
 
       <DestinationSection />
     </DashboardContainer>
