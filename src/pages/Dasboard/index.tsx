@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import WeatherSection from "../../components/Weather";
 import DestinationSection from "../../components/Destination";
+import GameSection from "../../components/GameSection";
 import { DashboardContainer, DashboardHeader, Icon } from "./styles";
 import useGetTime from "../../hooks/useGetTime";
 import { RiMenu4Line } from "react-icons/ri";
+import { SectionTitle } from "../styled-components";
 
-const index = ({data, forecasts}: {data: any, forecasts: any}) => {
+const index = ({ data, forecasts }: { data: any; forecasts: any }) => {
   const time = useGetTime();
 
   return (
@@ -16,10 +18,9 @@ const index = ({data, forecasts}: {data: any, forecasts: any}) => {
           <RiMenu4Line />
         </Icon>
         {/* Maybe add a Music player in the header */}
-      </DashboardHeader >
-
-      <WeatherSection time={time} data={data} forecasts={forecasts}/>
-
+      </DashboardHeader>
+      <WeatherSection time={time} data={data} forecasts={forecasts} />
+      <GameSection />
       <DestinationSection />
     </DashboardContainer>
   );

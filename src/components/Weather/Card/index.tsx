@@ -22,7 +22,6 @@ const index = ({ forecast, index }: { forecast: any; index: number }) => {
   const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(
     WEEK_DAYS.slice(0, dayInAWeek)
   );
-  console.log(forecast);
 
   return (
     <CardSlide>
@@ -37,11 +36,11 @@ const index = ({ forecast, index }: { forecast: any; index: number }) => {
           <img
             // alt="weather"
             className="weather-icon"
-            src={`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`}
+            src={`http://openweathermap.org/img/w/${forecast?.weather[0].icon}.png`}
             width="80px"
           />
         </CardIcon>
-        <span>{forecast.weather[0].description}</span>
+        <span>{forecast?.weather[0].description}</span>
       </CardMiddle>
 
       <CardBottom>
@@ -50,7 +49,7 @@ const index = ({ forecast, index }: { forecast: any; index: number }) => {
             <Icon>
               <WiStrongWind />
             </Icon>
-            <span>{Math.round(forecast.wind.speed)}km/h</span>
+            <span>{Math.round(forecast?.wind.speed)}km/h</span>
           </CardBottomInfoContainer>
           <CardBottomInfoContainer>
             <Icon>
@@ -62,7 +61,7 @@ const index = ({ forecast, index }: { forecast: any; index: number }) => {
 
         <CardBottomWeather>
           <span>
-            {Math.round(forecast.main.temp)}
+            {Math.round(forecast?.main.temp)}
             <Icon>
               <WiDegrees />
             </Icon>

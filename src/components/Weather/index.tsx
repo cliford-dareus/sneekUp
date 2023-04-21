@@ -15,7 +15,6 @@ import { WiDaySnowWind, WiDegrees } from "react-icons/wi";
 import { Time } from "../../hooks/useGetTime";
 import Card from "./Card";
 import { motion } from "framer-motion";
-import { useGetForcastsQuery } from "../../features/weatherApi";
 
 const index = ({
   time,
@@ -46,7 +45,7 @@ const index = ({
               // alt="weather"
               width="100%"
               className="weather-icon"
-              src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+              src={`http://openweathermap.org/img/w/${data?.weather[0].icon}.png`}
             />
           </WeatherIcon>
 
@@ -65,7 +64,7 @@ const index = ({
       </DashboardWeatherContainer>
 
       <DashboardWeatherSlideContainer>
-        <SlideTitle>Weather forcast</SlideTitle>
+        <SlideTitle>Weather Forecast</SlideTitle>
 
         <SliderContainer ref={carouselRef}>
           <SliderInnerContainer

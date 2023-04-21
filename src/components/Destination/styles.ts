@@ -49,11 +49,18 @@ export const DestinationCardContainer = styled.div`
   flex-direction: column;
   gap: 1em;
   margin-top: 1em;
+
+
+  @media screen and  (min-width: 786px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+  }
 `;
 
 export const DestinationCard = styled.div`
   position: relative;
-  height: 200px;
+  height: 190px;
   /* border: 1px solid rgba(255, 255, 255, 0.3); */
   padding: 1em;
   border-radius: 0.5em;
@@ -69,5 +76,11 @@ export const DestinationCard = styled.div`
     object-fit: cover;
     z-index: -1;
     mix-blend-mode: darken;
+  }
+
+  @media screen and  (min-width: 786px) {
+    width: calc(25% - .8em);
+    max-width: 550px;
+    height: 250px;
   }
 `;

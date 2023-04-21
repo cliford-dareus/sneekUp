@@ -17,6 +17,10 @@ export const SectionTitle = styled.h2`
   /* width: min-content; */
   font-size: 2rem;
   line-height: 1;
+
+  @media screen and (min-width: 760px) {
+    font-size: 4rem;
+  }
 `;
 
 export const FlexContainer = styled.div`
