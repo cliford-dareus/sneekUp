@@ -43,7 +43,7 @@ export const destinations = [
     desc: "",
   },
   {
-    id: "des_4",
+    id: "des_5",
     name: "Disney Land",
     image: Bahamas,
     city: "",
@@ -53,7 +53,7 @@ export const destinations = [
     desc: "",
   },
   {
-    id: "des_4",
+    id: "des_6",
     name: "Disney Land",
     image: Bahamas,
     city: "",
@@ -63,7 +63,7 @@ export const destinations = [
     desc: "",
   },
   {
-    id: "des_4",
+    id: "des_7",
     name: "Disney Land",
     image: Bahamas,
     city: "",
@@ -73,7 +73,7 @@ export const destinations = [
     desc: "",
   },
   {
-    id: "des_4",
+    id: "des_8",
     name: "Disney Land",
     image: Bahamas,
     city: "",
