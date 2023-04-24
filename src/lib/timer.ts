@@ -22,7 +22,6 @@ class IdleTimer {
 
     const expiredTime = parseInt(localStorage.getItem("_expiredTime")!) || 0;
     if (expiredTime > 0 && expiredTime < Date.now()) {
-      console.log('it is 0')
       onExpired();
       return;
     }
