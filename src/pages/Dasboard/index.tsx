@@ -5,7 +5,6 @@ import GameSection from "../../components/GameSection";
 import { DashboardContainer, DashboardHeader, Icon } from "./styles";
 import useGetTime from "../../hooks/useGetTime";
 import { RiMenu4Line } from "react-icons/ri";
-import { SectionTitle } from "../styled-components";
 
 const index = ({ data, forecasts }: { data: any; forecasts: any }) => {
   const time = useGetTime();
