@@ -13,7 +13,16 @@ import { BsFilter } from "react-icons/bs";
 import { Icon } from "../../pages/Dasboard/styles";
 import { DestinationType, destinations } from "../../utils/data/Destination";
 
-const filters = ["tropical", "Dry", "Temperate", "Continental", "Polar", "luxury", "family", "amusment-park"];
+const filters = [
+  "tropical",
+  "Dry",
+  "Temperate",
+  "Continental",
+  "Polar",
+  "luxury",
+  "family",
+  "amusment-park",
+];
 
 const index = () => {
   const [isOpen, setIsOPen] = useState<boolean>(false);
@@ -22,20 +31,20 @@ const index = () => {
 
   const filterDestination = () => {
     const addFilters = destinations.filter((destination) => {
-        const d = destination.tags.filter(tag => filtered.includes(tag))
-        return d.length !== 0
-    })
+      const d = destination.tags.filter((tag) => filtered.includes(tag));
+      return d.length !== 0;
+    });
 
-    setFilterDestination(addFilters)
+    setFilterDestination(addFilters);
   };
 
   useEffect(() => {
     if (filtered.length === 0) {
       setFilterDestination(destinations);
-      return
+      return;
     }
 
-    filterDestination()
+    filterDestination();
   }, [filtered]);
 
   return (
@@ -47,9 +56,16 @@ const index = () => {
       <DestinationFilter isOpen={isOpen}>
         <DestinationFilterTop>
           <DestinationFilterButtonContainer>
-            <FilterButton>All</FilterButton>
+            <FilterButton onClick={() => setFiltered([])}>All</FilterButton>
             {filtered.map((filter) => (
-              <FilterButton>{filter}</FilterButton>
+              <FilterButton
+                onClick={() => {
+                  const newFilter = filtered.filter((tab) => tab !== filter);
+                  setFiltered(newFilter);
+                }}
+              >
+                {filter}
+              </FilterButton>
             ))}
           </DestinationFilterButtonContainer>
 
@@ -62,7 +78,11 @@ const index = () => {
           {filters.map((filter) => {
             return (
               <FilterButton
-                onClick={() => setFiltered((prev) => [...prev, filter])}
+                key={filter}
+                onClick={() => {
+                  if (filtered.includes(filter)) return;
+                  setFiltered((prev) => [...prev, filter]);
+                }}
               >
                 {filter}
               </FilterButton>

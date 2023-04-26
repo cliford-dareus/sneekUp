@@ -75,7 +75,7 @@ const index = ({
               forecasts?.list
                 ?.slice(0, 7)
                 .map((forecast: any, index: number) => {
-                  return <Card forecast={forecast} index={index} />;
+                  return <Card key={index} forecast={forecast} index={index} />;
                 })}
           </SliderInnerContainer>
         </SliderContainer>

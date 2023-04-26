@@ -22,7 +22,7 @@ const index = ({ data, forecasts }: { data: any; forecasts: any }) => {
       <GameSection />
       <DestinationSection />
     </DashboardContainer>
-  );
+  );             
 };
 
 export default index;
