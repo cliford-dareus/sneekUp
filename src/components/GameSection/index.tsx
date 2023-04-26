@@ -1,13 +1,73 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SectionTitle } from "../../pages/styled-components";
-import { GameSectionContainer } from "./styles";
+import {
+  GameCard,
+  GameCardBackgroundImage,
+  GameCardContainer,
+  GameCardContent,
+  GameCardGenre,
+  GameCardInner,
+  GameCardStatus,
+  GameFavoritedCard,
+  GameFavoritedCardContainer,
+  GameFavoritedContainer,
+  GameSectionContainer,
+} from "./styles";
+import { games } from "../../utils/data/Games";
+import { BsSuitHeartFill, BsSuitHeart } from "react-icons/bs";
 
 const index = () => {
+  const [width, setWidth] = useState<number>(0);
+  const carouselRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+
+  useEffect(() => {
+    setWidth(
+      carouselRef.current?.scrollWidth! - carouselRef.current?.offsetWidth!
+    );
+  }, []);
+
   return (
     <GameSectionContainer>
       <SectionTitle>
         Upcoming <br /> Games To Watch
       </SectionTitle>
+
+      <GameCardContainer ref={carouselRef}>
+        <GameCardInner drag="x" dragConstraints={{ right: 0, left: -width }}>
+          {games.slice(0, 6).map((game) => (
+            <GameCard>
+              <GameCardBackgroundImage
+                style={{ backgroundImage: `url(${game.image})` }}
+              />
+
+              <GameCardContent>
+                <h3>{game.title}</h3>
+                <p>{game.description}</p>
+                <GameCardGenre>
+                  {game.genre.slice(0, 2).map((g) => (
+                    <span>{g}</span>
+                  ))}
+                </GameCardGenre>
+              </GameCardContent>
+
+              <GameCardStatus>
+                {game.favorited ? <BsSuitHeartFill /> : <BsSuitHeart />}
+              </GameCardStatus>
+            </GameCard>
+          ))}
+        </GameCardInner>
+      </GameCardContainer>
+
+      <GameFavoritedContainer>
+        <h3>Favorited Games</h3>
+        <GameFavoritedCardContainer>
+          {games
+            .filter((game) => game.favorited === true)
+            .map((g) => (
+              <GameFavoritedCard>{g.title}</GameFavoritedCard>
+            ))}
+        </GameFavoritedCardContainer>
+      </GameFavoritedContainer>
     </GameSectionContainer>
   );
 };
