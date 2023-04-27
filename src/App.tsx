@@ -10,6 +10,7 @@ import IdleTimer from "./lib/timer";
 import { useAppDispatch } from "./app/hooks";
 import { logout } from "./features/userSlice";
 import { useGetForcastsQuery, useGetWeatherQuery } from "./features/weatherApi";
+import Footer from "./components/Footer";
 
 function App() {
   const [isTimer, setIsTimer] = useState<boolean>(false);
@@ -61,6 +62,7 @@ function App() {
             />
           </Route>
         </Routes>
+        <Footer />
       </MainContainer>
     </>
   );

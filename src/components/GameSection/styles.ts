@@ -89,7 +89,6 @@ export const GameFavoritedCardContainer = styled.div`
   flex-wrap: wrap;
   gap: 1em;
   margin-top: 1em;
-  height: 150px;
 `;
 
 export const GameFavoritedCard = styled.div`
