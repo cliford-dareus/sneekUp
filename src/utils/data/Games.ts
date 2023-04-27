@@ -10,7 +10,7 @@ export const games = [
   },
   {
     id: "g_2",
-    title: "God of War",
+    title: "Call of Duty",
     price: 0,
     description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. V quibusdam assumenda dignissimos sunt numquam.",
     genre: ['action'],
@@ -19,16 +19,16 @@ export const games = [
   },
   {
     id: "g_3",
-    title: "God of War",
+    title: "Far Cry",
     price: 0,
-    description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. V quibusdam assumenda dignissimos sunt numquam.",
+    description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. dignissimos sunt numquam.",
     genre: [],
     image: "https://images.unsplash.com/photo-1632266484284-a11d9e3a460a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGhhcnJ5JTIwcG90dGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
     favorited: true,
   },
   {
     id: "g_4",
-    title: "God of War",
+    title: "Spider-Man",
     price: 0,
     description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. V quibusdam assumenda dignissimos sunt numquam.",
     genre: [],

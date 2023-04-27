@@ -50,8 +50,7 @@ export const DestinationCardContainer = styled.div`
   gap: 1em;
   margin-top: 1em;
 
-
-  @media screen and  (min-width: 786px) {
+  @media screen and (min-width: 786px) {
     flex-direction: row;
     flex-wrap: wrap;
     /* justify-content: space-between; */
@@ -79,8 +78,17 @@ export const DestinationCard = styled.div`
     mix-blend-mode: darken;
   }
 
-  @media screen and  (min-width: 786px) {
-    width: calc(25% - .8em);
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    background: linear-gradient(to bottom, purple, transparent);
+  }
+
+  @media screen and (min-width: 786px) {
+    width: calc(25% - 0.8em);
     max-width: 550px;
     height: 250px;
   }

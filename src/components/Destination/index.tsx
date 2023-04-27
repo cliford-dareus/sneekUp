@@ -57,9 +57,9 @@ const index = () => {
         <DestinationFilterTop>
           <DestinationFilterButtonContainer>
             <FilterButton onClick={() => setFiltered([])}>All</FilterButton>
-            {filtered.map((filter) => (
+            {filtered.map((filter, index) => (
               <FilterButton
-                key={filter}
+                key={index}
                 onClick={() => {
                   const newFilter = filtered.filter((tab) => tab !== filter);
                   setFiltered(newFilter);

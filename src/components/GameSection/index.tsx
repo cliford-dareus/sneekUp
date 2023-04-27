@@ -34,7 +34,7 @@ const index = () => {
 
       <GameCardContainer ref={carouselRef}>
         <GameCardInner drag="x" dragConstraints={{ right: 0, left: -width }}>
-          {games.slice(0, 6).map((game) => (
+          {games.map((game) => (
             <GameCard>
               <GameCardBackgroundImage
                 style={{ backgroundImage: `url(${game.image})` }}
@@ -50,7 +50,9 @@ const index = () => {
                 </GameCardGenre>
               </GameCardContent>
 
-              <GameCardStatus>
+              <GameCardStatus 
+                // onClick={}
+              >
                 {game.favorited ? <BsSuitHeartFill /> : <BsSuitHeart />}
               </GameCardStatus>
             </GameCard>
@@ -64,7 +66,11 @@ const index = () => {
           {games
             .filter((game) => game.favorited === true)
             .map((g) => (
-              <GameFavoritedCard>{g.title}</GameFavoritedCard>
+              <GameFavoritedCard 
+                // style={{ backgroundImage: `url(${g.image})` }}
+              >
+                <h3>{g.title}</h3>
+              </GameFavoritedCard>
             ))}
         </GameFavoritedCardContainer>
       </GameFavoritedContainer>

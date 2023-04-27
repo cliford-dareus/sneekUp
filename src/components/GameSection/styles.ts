@@ -19,7 +19,7 @@ export const GameCardInner = styled(motion.div)`
 `;
 
 export const GameCard = styled.div`
-  max-height: 500px;
+  /* max-height: 500px; */
   height: 400px;
   min-width: 260px;
   padding: 1em;
@@ -31,8 +31,8 @@ export const GameCard = styled.div`
   cursor: pointer;
 
   @media screen and (min-width: 760px) {
-    width: calc(100% / 5);
-    height: 30vw;
+    min-width: calc(100% / 4);
+    height: 35vw;
   }
 `;
 
@@ -95,14 +95,17 @@ export const GameFavoritedCardContainer = styled.div`
 export const GameFavoritedCard = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 16px;
-  min-height: 100px;
+  min-height: 50px;
   width: calc(100% / 2 - .5em);
   padding: 1em;
   height: 10vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  
+
   cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media screen and (min-width: 760px) {
     width: calc(100% /3 - .7em);
