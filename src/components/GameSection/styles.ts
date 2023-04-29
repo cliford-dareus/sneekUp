@@ -9,8 +9,8 @@ export const GameSectionContainer = styled(Section)`
 
 export const GameCardContainer = styled(motion.div)`
   width: 100%;
-  overflow: hidden;
-  margin-top: 1em;
+  padding-top: 1em;
+  overflow-x: hidden;
 `;
 
 export const GameCardInner = styled(motion.div)`
@@ -18,7 +18,7 @@ export const GameCardInner = styled(motion.div)`
   gap: 1em;
 `;
 
-export const GameCard = styled.div`
+export const GameCard = styled(motion.div)`
   /* max-height: 500px; */
   height: 400px;
   min-width: 260px;
@@ -36,7 +36,11 @@ export const GameCard = styled.div`
   }
 `;
 
-export const GameCardBackgroundImage = styled.div`
+interface IImage {
+  readonly isHovered: boolean
+}
+
+export const GameCardBackgroundImage = styled(motion.div)<IImage>`
   position: absolute;
   inset: 0;
   background-position: center;
@@ -55,7 +59,7 @@ export const GameCardContent = styled.div`
   background: linear-gradient(to top, purple, transparent, black);
 `;
 
-export const GameCardStatus = styled.span`
+export const GameCardStatus = styled(motion.span)`
   position: absolute;
   z-index: 2;
   top: 0;
@@ -95,11 +99,10 @@ export const GameFavoritedCard = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 16px;
   min-height: 50px;
-  width: calc(100% / 2 - .5em);
+  width: calc(100% / 2 - 0.5em);
   padding: 1em;
   height: 10vw;
   background-color: rgba(255, 255, 255, 0.3);
-  
 
   cursor: pointer;
   background-position: center;
@@ -107,6 +110,6 @@ export const GameFavoritedCard = styled.div`
   background-size: cover;
 
   @media screen and (min-width: 760px) {
-    width: calc(100% /3 - .7em);
+    width: calc(100% / 3 - 0.7em);
   }
 `;
