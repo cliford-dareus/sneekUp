@@ -48,7 +48,6 @@ const index = () => {
               whileHover={{ y: -10 }}
             >
               <GameCardBackgroundImage
-                isHovered={hovered}
                 style={{ backgroundImage: `url(${game.image})` }}
               />
 

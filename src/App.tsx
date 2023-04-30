@@ -27,7 +27,7 @@ function App() {
       timeOut: 20,
       onTimeOut: () => {
         setIsTimer(true);
-        // dispatch(logout())
+        // dispatch(logout());
       },
       onExpired: () => {
         setIsTimer(true);
@@ -42,6 +42,7 @@ function App() {
   useEffect(() => {
     if (isTimer) {
       if (isTimer === Boolean("false")) {
+        //  console.log('gg')
       }
     }
   }, [isTimer]);

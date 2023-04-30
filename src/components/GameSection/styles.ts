@@ -30,23 +30,25 @@ export const GameCard = styled(motion.div)`
   overflow: hidden;
   cursor: pointer;
 
+  /* &:hover div:nth-of-type(1){
+    background-size: 120% ;
+  } */
+
+
   @media screen and (min-width: 760px) {
     min-width: calc(100% / 4);
     height: 35vw;
   }
 `;
 
-interface IImage {
-  readonly isHovered: boolean
-}
-
-export const GameCardBackgroundImage = styled(motion.div)<IImage>`
+export const GameCardBackgroundImage = styled(motion.div)`
   position: absolute;
   inset: 0;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
+  transition: background-size 2s ease-in-out;
 `;
 
 export const GameCardContent = styled.div`
