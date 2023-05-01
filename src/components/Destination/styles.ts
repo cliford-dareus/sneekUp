@@ -64,7 +64,7 @@ export const DestinationCardContainer = styled(motion.div)`
     flex-direction: row;
     flex-wrap: wrap;
     /* justify-content: space-between; */
-    height: calc(250px * 2);
+    height: calc(250px * 2 + 2em);
   }
 `;
 

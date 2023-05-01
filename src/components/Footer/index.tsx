@@ -1,10 +1,11 @@
 import React from 'react';
+import { Footer } from './styles';
 
 const index = () => {
   return (
-    <div>index
+    <Footer>index
       <h1>Footer</h1>
-    </div>
+    </Footer>
   )
 }
 

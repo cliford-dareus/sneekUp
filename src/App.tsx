@@ -16,7 +16,7 @@ function App() {
   const [isTimer, setIsTimer] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const Navigate = useNavigate();
-  const { data: weather } = useGetWeatherQuery({ lat: "25.76", lon: "-80.19" })
+  const { data: weather } = useGetWeatherQuery({ lat: "25.76", lon: "-80.19" });
 
   useEffect(() => {
     const timer = new IdleTimer({
@@ -47,18 +47,17 @@ function App() {
     <>
       <GlobalStyle />
       <MainContainer>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/lockscreen" element={<LockScreen data={weather} />} />
-          <Route element={<ProtectedRoutes />}>
-            {/* Add a Layout for navbar */}
-            <Route
-              path="/"
-              element={<Dashboard data={weather} />}
-            />
-          </Route>
-        </Routes>
+        <>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/lockscreen" element={<LockScreen data={weather} />} />
+            <Route element={<ProtectedRoutes />}>
+              {/* Add a Layout for navbar */}
+              <Route path="/" element={<Dashboard data={weather} />} />
+            </Route>
+          </Routes>
+        </>
         <Footer />
       </MainContainer>
     </>

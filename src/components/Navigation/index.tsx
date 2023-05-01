@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation } from "./styles";
+import { Navigation, NavigationProfile } from "./styles";
 import { Link } from "react-router-dom";
 import NavigationItem from "../NavigationItem";
 

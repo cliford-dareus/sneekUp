@@ -7,11 +7,11 @@ import {
   NavigationBackground,
 } from "./styles";
 import { Time } from "../../hooks/useGetTime";
-import { Icon } from "../../pages/Dasboard/styles";
-import { useRef } from "react";
-import { useCycle } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { useCycle, useScroll } from "framer-motion";
 import { useDimensions } from "../../hooks/useDimensions";
 import Navigations from "../Navigation";
+import NavigationProfile from '../NavigationProfile';
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -30,15 +30,22 @@ const sidebar = {
       delay: 0.5,
       type: "spring",
       stiffness: 400,
-      damping: 40,
+      // damping: 40,
     },
   },
 };
 
 const index = ({ time }: { time: Time }) => {
-  const [isOpen, toggleOpen] = useCycle(false, true);
+  const [isOpen, toggleOpen] = useCycle(true, false);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
+  const { scrollYProgress } = useScroll();
+
+  useEffect(() => {
+    if (scrollYProgress?.get() > 0 && isOpen == true) {
+      toggleOpen();
+    }
+  }, [scrollYProgress?.get()]);
 
   return (
     <DashboardHeader>
@@ -64,6 +71,7 @@ const index = ({ time }: { time: Time }) => {
         </MenuToggle>
 
         <Navigations />
+        <NavigationProfile />
 
         <NavigationBackground variants={sidebar} />
       </Navigation>

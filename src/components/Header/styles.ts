@@ -12,9 +12,7 @@ export const DashboardHeader = styled.header`
   position: relative;
 `;
 
-export const DasboardDayDisplay = styled.span`
-  
-`;
+export const DasboardDayDisplay = styled.span``;
 
 export const Navigation = styled(motion.nav)`
   width: 100%;
@@ -45,8 +43,12 @@ export const NavigationBackground = styled(motion.div)`
   right: 0;
   bottom: 0;
   width: 100%;
-  /* background: rgba(255, 255, 255, 0.2); */
-  background-color: purple;
+  background: rgba(255, 255, 255, 0.2);
+  /* background-image: radial-gradient(rgba(0, 0, 0, 0) 1px, purple 1px); */
+  background-size: 4px 4px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  -moz-backdrop-filter: blur(3px);
   z-index: -1;
 
   @media screen and (min-width: 760px) {
