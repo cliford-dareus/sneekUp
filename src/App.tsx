@@ -16,11 +16,7 @@ function App() {
   const [isTimer, setIsTimer] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const Navigate = useNavigate();
-  const { data: weather } = useGetWeatherQuery({ lat: "25.76", lon: "-80.19" });
-  const { data: forecasts } = useGetForcastsQuery({
-    lat: "25.76",
-    lon: "-80.19",
-  });
+  const { data: weather } = useGetWeatherQuery({ lat: "25.76", lon: "-80.19" })
 
   useEffect(() => {
     const timer = new IdleTimer({
@@ -59,7 +55,7 @@ function App() {
             {/* Add a Layout for navbar */}
             <Route
               path="/"
-              element={<Dashboard data={weather} forecasts={forecasts} />}
+              element={<Dashboard data={weather} />}
             />
           </Route>
         </Routes>

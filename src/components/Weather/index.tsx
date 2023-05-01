@@ -15,18 +15,16 @@ import { WiDaySnowWind, WiDegrees } from "react-icons/wi";
 import { Time } from "../../hooks/useGetTime";
 import Card from "./Card";
 import { motion } from "framer-motion";
+import { useGetForcastsQuery } from "../../features/weatherApi";
+import { Loader } from "../../pages/styled-components";
 
-const index = ({
-  time,
-  data,
-  forecasts,
-}: {
-  time: Time;
-  data: any;
-  forecasts: any;
-}) => {
+const index = ({ time, data }: { time: Time; data: any }) => {
   const [width, setWidth] = useState<number>(0);
   const carouselRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const { data: forecasts, isLoading } = useGetForcastsQuery({
+    lat: "25.76",
+    lon: "-80.19",
+  });
 
   useEffect(() => {
     setWidth(
@@ -39,7 +37,11 @@ const index = ({
       <DashboardWeatherContainer>
         <p>{data?.name}</p>
         <WeatherContainer>
-          <WeatherIcon>
+          <WeatherIcon
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2 }}
+          >
             {/* <WiDaySnowWind /> */}
             <img
               // alt="weather"
@@ -50,7 +52,11 @@ const index = ({
           </WeatherIcon>
 
           <WeatherInfo>
-            <span>{Math.round(data?.main.temp)}°</span>
+            {Math.round(data?.main.temp)? (
+              <span>{Math.round(data?.main.temp)}°</span>
+            ) : (
+              <Loader></Loader>
+            )}
             <WiDegrees />
           </WeatherInfo>
         </WeatherContainer>
@@ -66,19 +72,34 @@ const index = ({
       <DashboardWeatherSlideContainer>
         <SlideTitle>Weather Forecast</SlideTitle>
 
-        <SliderContainer ref={carouselRef}>
-          <SliderInnerContainer
-            drag="x"
-            dragConstraints={{ right: 0, left: -width }}
+        {!isLoading ? (
+          <SliderContainer ref={carouselRef}>
+            <SliderInnerContainer
+              drag="x"
+              dragConstraints={{ right: 0, left: -width }}
+            >
+              {forecasts?.list?.length > 0 &&
+                forecasts?.list
+                  ?.slice(0, 7)
+                  .map((forecast: any, index: number) => {
+                    return (
+                      <Card key={index} forecast={forecast} index={index} />
+                    );
+                  })}
+            </SliderInnerContainer>
+          </SliderContainer>
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              height: "230px",
+              display: "grid",
+              placeContent: "center",
+            }}
           >
-            {forecasts?.list.length > 0 &&
-              forecasts?.list
-                ?.slice(0, 7)
-                .map((forecast: any, index: number) => {
-                  return <Card key={index} forecast={forecast} index={index} />;
-                })}
-          </SliderInnerContainer>
-        </SliderContainer>
+            <Loader></Loader>
+          </div>
+        )}
       </DashboardWeatherSlideContainer>
     </WeatherSection>
   );

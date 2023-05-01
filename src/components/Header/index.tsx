@@ -1,5 +1,6 @@
 import { RiCloseLine, RiMenu4Line } from "react-icons/ri";
 import {
+  DasboardDayDisplay,
   DashboardHeader,
   MenuToggle,
   Navigation,
@@ -41,7 +42,9 @@ const index = ({ time }: { time: Time }) => {
 
   return (
     <DashboardHeader>
-      <span>{time.day}</span>
+      <DasboardDayDisplay>
+        {time.day !== "" ? time.day : "Loading..."}
+      </DasboardDayDisplay>
 
       <Navigation
         initial={false}

@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const spinner = keyframes`
+  100% {
+     transform: rotate(1turn);
+  }
+`;
 
 export const PageContainer = styled.div`
   width: 100vw;
@@ -90,4 +96,14 @@ export const Anchor = styled(Link)`
   display: inline-block;
   text-decoration: none;
   color: inherit;
+`;
+
+export const Loader = styled.div`
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side,purple 94%,#0000) top/9px 9px no-repeat,
+          conic-gradient(#0000 30%,purple);
+   -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 9px),#000 0);
+  animation: ${spinner} 1s infinite linear;
 `;

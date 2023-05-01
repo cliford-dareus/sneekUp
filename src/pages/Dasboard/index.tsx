@@ -3,11 +3,11 @@ import WeatherSection from "../../components/Weather";
 import DestinationSection from "../../components/Destination";
 import GameSection from "../../components/GameSection";
 import Header from '../../components/Header';
-import { DashboardContainer, DashboardHeader, Icon } from "./styles";
+import { DashboardContainer, Icon } from "./styles";
 import useGetTime from "../../hooks/useGetTime";
 import { Pin } from "../../lib/PinHelper";
 
-const index = ({ data, forecasts }: { data: any; forecasts: any }) => {
+const index = ({ data }: { data: any }) => {
   const time = useGetTime();
   const timeLeft = Pin.getInactiveTime()
   // console.log(new Date() - new Date(timeLeft))
@@ -15,7 +15,7 @@ const index = ({ data, forecasts }: { data: any; forecasts: any }) => {
   return (
     <DashboardContainer>
       <Header time={time}/>
-      <WeatherSection time={time} data={data} forecasts={forecasts} />
+      <WeatherSection time={time} data={data}/>
       <GameSection />
       <DestinationSection />
     </DashboardContainer>

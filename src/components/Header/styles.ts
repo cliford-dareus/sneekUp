@@ -12,6 +12,10 @@ export const DashboardHeader = styled.header`
   position: relative;
 `;
 
+export const DasboardDayDisplay = styled.span`
+  
+`;
+
 export const Navigation = styled(motion.nav)`
   width: 100%;
   height: 100vh;
