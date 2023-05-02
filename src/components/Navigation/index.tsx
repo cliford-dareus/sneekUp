@@ -3,7 +3,34 @@ import { Navigation, NavigationProfile } from "./styles";
 import { Link } from "react-router-dom";
 import NavigationItem from "../NavigationItem";
 
-const links = [1, 2, 3, 4, 5];
+const links = [
+  {
+    id: 'nav_1',
+    title: 'Home',
+    icon: '',
+    to: '/'
+  },
+  {
+    id: 'nav_2',
+    title: 'About Me',
+    icon: '',
+    to: '/about-me'
+  },
+  {
+    id: 'nav_3',
+    title: 'Contact-Me',
+    icon: '',
+    to: '/contact-me'
+  },
+
+];
+
+export type INavItem = {
+  id: string;
+  title: string;
+  icon: string;
+  to: string
+}
 
 const variants = {
   open: {
@@ -17,8 +44,8 @@ const variants = {
 const index = () => {
   return (
     <Navigation variants={variants}>
-      {links.map((link, index) => (
-        <NavigationItem index={index} />
+      {links.map((data, index) => (
+        <NavigationItem data={data}/>
       ))}
     </Navigation>
   );

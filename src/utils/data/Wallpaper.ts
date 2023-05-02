@@ -19,4 +19,14 @@ export const wallpapers = [
         name: 'Ibiza',
         img: BgIbiza
     },
+    {
+        id: 'w_4',
+        name: 'Ibiza',
+        img: BgIbiza
+    },
+    {
+        id: 'w_5',
+        name: 'Ibiza',
+        img: BgIbiza
+    },
 ]

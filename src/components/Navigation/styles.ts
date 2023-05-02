@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Navigation = styled(motion.ul)`
   position: absolute;
-  top: 2em;
+  top: 4em;
   width: 300px;
   padding: 1em;
 `;
@@ -12,6 +12,7 @@ export const NavigationItem = styled(motion.li)`
   list-style-type: none;
   color: whitesmoke;
   pointer-events: all;
+  cursor: pointer;
 `;
 
 export const NavigationProfile = styled(motion.div)`

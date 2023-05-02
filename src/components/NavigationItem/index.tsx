@@ -1,5 +1,7 @@
 import React from "react";
 import { NavigationItem } from "../Navigation/styles";
+import { Link } from "react-router-dom";
+import { INavItem } from "../Navigation";
 
 const variants = {
   open: {
@@ -18,15 +20,15 @@ const variants = {
   },
 };
 
-const index = ({ index}: {index: number}) => {
+const index = ({ data}: { data: INavItem}) => {
   return (
     <NavigationItem
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      key={index}
+      key={data.id}
     >
-        Home
+        <Link to={`${data.to}`}>{data.title}</Link> 
     </NavigationItem>
   );
 };

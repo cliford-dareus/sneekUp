@@ -37,7 +37,7 @@ const sidebar = {
 
 const index = () => {
   const time = useGetTime();
-  const [isOpen, toggleOpen] = useCycle(true, false);
+  const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
   const { scrollYProgress } = useScroll();

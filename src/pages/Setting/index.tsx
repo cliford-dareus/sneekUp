@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import {
+  ModeSwitch,
   SettingContainer,
   SettingContents,
   SettingDarkMode,
@@ -10,6 +11,7 @@ import {
   SettingWallpaperCardBox,
   SettingWallpaperCardBoxInner,
   SettingWallpaperForm,
+  SwitchHandle,
 } from "./styles";
 import { wallpapers } from "../../utils/data/Wallpaper";
 
@@ -30,6 +32,7 @@ const index = ({
     image: null,
   });
   const [width, setWidth] = useState<number>(0);
+  const [isOn, setIsOn] = useState(false);
   const carouselRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const handleFiles = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +40,8 @@ const index = ({
   };
 
   //   console.log(file)
+
+  const toggleSwitch = () => setIsOn(!isOn);
 
   const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,8 +54,6 @@ const index = ({
     );
   }, []);
 
-  console.log(wallpaper);
-
   return (
     <SettingContainer style={{ backgroundImage: `url(${wallpaper.image})` }}>
       <Header />
@@ -60,7 +63,9 @@ const index = ({
           <span>Mode</span>
           <div>
             <span>Light</span>
-            <span>Switch</span>
+            <ModeSwitch onClick={toggleSwitch} data-isOn={isOn}>
+              <SwitchHandle layout transition={spring}></SwitchHandle>
+            </ModeSwitch>
           </div>
         </SettingDarkMode>
 
@@ -68,18 +73,19 @@ const index = ({
           <span>WallPaper</span>
           <SettingWallpaperCardBox ref={carouselRef}>
             <SettingWallpaperCardBoxInner
-              drag={"x"}
+              drag="x"
               dragConstraints={{ right: 0, left: -width }}
-            ></SettingWallpaperCardBoxInner>
-            {wallpapers.map((bg) => (
-              <SettingWallpaperCard
-                whileHover={{ scale: 1.05 }}
-                onClick={() => changeWallpaper({ newImage: bg.img })}
-              >
-                <img src={`${bg.img}`} alt="" />
-                {bg.name}
-              </SettingWallpaperCard>
-            ))}
+            >
+              {wallpapers.map((bg) => (
+                <SettingWallpaperCard
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => changeWallpaper({ newImage: bg.img })}
+                >
+                  <img src={`${bg.img}`} alt="" />
+                  {bg.name}
+                </SettingWallpaperCard>
+              ))}
+            </SettingWallpaperCardBoxInner>
           </SettingWallpaperCardBox>
 
           <SettingWallpaperForm>
@@ -94,6 +100,12 @@ const index = ({
       <Footer />
     </SettingContainer>
   );
+};
+
+const spring = {
+  type: "spring",
+  stiffness: 700,
+  damping: 30,
 };
 
 export default index;

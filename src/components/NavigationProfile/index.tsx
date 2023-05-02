@@ -5,8 +5,10 @@ import {
   NavigationProfileRigth,
   ProfilePicContainer,
 } from "../Navigation/styles";
+import { logout } from "../../features/userSlice";
 import { RiLogoutCircleRLine, RiSettings2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../app/hooks";
 
 const variants = {
   open: {
@@ -21,6 +23,8 @@ const variants = {
 };
 
 const index = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <NavigationProfile variants={variants}>
       <NavigationProfileLeft></NavigationProfileLeft>
@@ -38,7 +42,7 @@ const index = () => {
             </Link>
           </span>
 
-          <span>
+          <span onClick={() => dispatch(logout())}>
             <RiLogoutCircleRLine />
           </span>
         </div>

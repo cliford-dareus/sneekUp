@@ -30,6 +30,28 @@ export const SettingDarkMode = styled.div`
   }
 `;
 
+export const ModeSwitch = styled(motion.span)`
+  width: 60px;
+  height: 30px;
+  border-radius: 3.125em;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+
+  &[data-isOn="true"] {
+    justify-content: flex-end;
+  }
+`;
+
+export const SwitchHandle = styled(motion.span)`
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: purple;
+`;
+
 export const SettingWallpaper = styled.div`
   border-top: 1px solid whitesmoke;
   padding-top: 1em;
@@ -65,6 +87,7 @@ export const SettingWallpaperCard = styled(motion.div)`
     position: absolute;
     inset: o;
     z-index: -1;
+    pointer-events: none;
   }
 `;
 
