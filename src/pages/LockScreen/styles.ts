@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Container } from "../styled-components";
 import { Link } from "react-router-dom";
-import Image1 from "../../assets/image1.png";
+import Image1 from "../../assets/bg/image1.png";
 
 export const LockScreen = styled(Container)`
   position: relative;

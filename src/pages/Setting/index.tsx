@@ -1,7 +1,6 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import Bg from "../../assets/image1.png";
 import {
   SettingContainer,
   SettingContents,
@@ -9,11 +8,14 @@ import {
   SettingWallpaper,
   SettingWallpaperCard,
   SettingWallpaperCardBox,
+  SettingWallpaperCardBoxInner,
   SettingWallpaperForm,
 } from "./styles";
+import { wallpapers } from "../../utils/data/Wallpaper";
 
 const index = ({
   changeWallpaper,
+  wallpaper,
 }: {
   changeWallpaper: ({
     newImage,
@@ -22,10 +24,13 @@ const index = ({
     newImage: string;
     darkMode?: boolean;
   }) => void;
+  wallpaper: any;
 }) => {
   const [file, setFile] = useState<{ image: any }>({
     image: null,
   });
+  const [width, setWidth] = useState<number>(0);
+  const carouselRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const handleFiles = (e: ChangeEvent<HTMLInputElement>) => {
     setFile({ image: e?.target?.files![0] });
@@ -38,8 +43,16 @@ const index = ({
     console.log("change it");
   };
 
+  useEffect(() => {
+    setWidth(
+      carouselRef.current?.scrollWidth! - carouselRef.current?.offsetWidth!
+    );
+  }, []);
+
+  console.log(wallpaper);
+
   return (
-    <SettingContainer>
+    <SettingContainer style={{ backgroundImage: `url(${wallpaper.image})` }}>
       <Header />
 
       <SettingContents>
@@ -53,18 +66,26 @@ const index = ({
 
         <SettingWallpaper>
           <span>WallPaper</span>
-          <SettingWallpaperCardBox>
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((bg) => (
-              <SettingWallpaperCard>{bg}</SettingWallpaperCard>
+          <SettingWallpaperCardBox ref={carouselRef}>
+            <SettingWallpaperCardBoxInner
+              drag={"x"}
+              dragConstraints={{ right: 0, left: -width }}
+            ></SettingWallpaperCardBoxInner>
+            {wallpapers.map((bg) => (
+              <SettingWallpaperCard
+                whileHover={{ scale: 1.05 }}
+                onClick={() => changeWallpaper({ newImage: bg.img })}
+              >
+                <img src={`${bg.img}`} alt="" />
+                {bg.name}
+              </SettingWallpaperCard>
             ))}
           </SettingWallpaperCardBox>
 
           <SettingWallpaperForm>
             <form onSubmit={onSubmit}>
               <input type="file" onChange={handleFiles} />
-              <button onClick={() => changeWallpaper({ newImage: Bg })}>
-                Change BG
-              </button>
+              <button>Change BG</button>
             </form>
           </SettingWallpaperForm>
         </SettingWallpaper>

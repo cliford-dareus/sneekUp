@@ -11,6 +11,7 @@ export const Navigation = styled(motion.ul)`
 export const NavigationItem = styled(motion.li)`
   list-style-type: none;
   color: whitesmoke;
+  pointer-events: all;
 `;
 
 export const NavigationProfile = styled(motion.div)`
@@ -22,6 +23,7 @@ export const NavigationProfile = styled(motion.div)`
   flex-direction: column;
   padding: 1em;
   gap: 1em;
+  pointer-events: all;
 
   background-image: radial-gradient(
     rgba(0, 0, 0, 0) 1px,

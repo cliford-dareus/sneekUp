@@ -23,6 +23,7 @@ export const Navigation = styled(motion.nav)`
   bottom: 0;
   z-index: 2222;
   isolation: isolate;
+  pointer-events: none;
 
   @media screen and (min-width: 760px) {
     width: 400px;
@@ -35,6 +36,7 @@ export const MenuToggle = styled(motion(Icon))`
   right: 0.5em;
   cursor: pointer;
   z-index: 1;
+  pointer-events: all;
 `;
 
 export const NavigationBackground = styled(motion.div)`

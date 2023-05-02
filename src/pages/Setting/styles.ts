@@ -2,7 +2,13 @@ import styled from "styled-components";
 import { PageContainer } from "../styled-components";
 import { motion } from "framer-motion";
 
-export const SettingContainer = styled(PageContainer)``;
+export const SettingContainer = styled(PageContainer)`
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #333;
+`;
 
 export const SettingContents = styled.section`
   padding: 1em;
@@ -15,6 +21,13 @@ export const SettingContents = styled.section`
 export const SettingDarkMode = styled.div`
   border-top: 1px solid whitesmoke;
   padding-top: 1em;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    /* margin: 0 5em; */
+    margin-top: 1em;
+  }
 `;
 
 export const SettingWallpaper = styled.div`
@@ -22,26 +35,44 @@ export const SettingWallpaper = styled.div`
   padding-top: 1em;
 `;
 
-export const SettingWallpaperCardBox = styled.div`
+export const SettingWallpaperCardBox = styled(motion.div)`
   display: flex;
   gap: 1em;
   overflow: hidden;
+  padding: 1em;
 
   @media screen and (min-width: 760px) {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
   }
 `;
 
+export const SettingWallpaperCardBoxInner = styled(motion.div)`
+  display: flex;
+  gap: 1em;
+`;
+
 export const SettingWallpaperCard = styled(motion.div)`
   min-width: 200px;
-  width: 33%;
-  background-color: red;
+  max-width: 300px;
   height: 150px;
   border-radius: 0.5em;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 
+  img {
+    position: absolute;
+    inset: o;
+    z-index: -1;
+  }
 `;
 
 export const SettingWallpaperForm = styled.div`
-    margin-top: 1em;
+  margin-top: 1em;
+  form {
+    display: flex;
+    justify-content: space-between;
+    /* padding:  0 5em; */
+  }
 `;

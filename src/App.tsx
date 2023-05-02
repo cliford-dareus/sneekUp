@@ -5,14 +5,14 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dasboard";
-import Setting from './pages/Setting'
+import Setting from "./pages/Setting";
 import LockScreen from "./pages/LockScreen";
 import IdleTimer from "./lib/timer";
 import { useAppDispatch } from "./app/hooks";
 import { logout } from "./features/userSlice";
 import { useGetForcastsQuery, useGetWeatherQuery } from "./features/weatherApi";
 import useChangeWallpaper from "./hooks/useChangeWallpaper";
-import BgImage from './assets/bg-purple.png';
+import BgImage from "./assets/bg/bg-purple.png";
 
 function App() {
   const { wallpaper, changeWallpaper } = useChangeWallpaper(BgImage);
@@ -56,8 +56,19 @@ function App() {
           <Route path="/lockscreen" element={<LockScreen data={weather} />} />
           <Route element={<ProtectedRoutes />}>
             {/* Add a Layout for navbar */}
-            <Route path="/" element={<Dashboard data={weather} wallpaper={wallpaper}/>} />
-            <Route path="/setting" element={<Setting changeWallpaper={changeWallpaper}/>} />
+            <Route
+              path="/"
+              element={<Dashboard data={weather} wallpaper={wallpaper} />}
+            />
+            <Route
+              path="/setting"
+              element={
+                <Setting
+                  wallpaper={wallpaper}
+                  changeWallpaper={changeWallpaper}
+                />
+              }
+            />
           </Route>
         </Routes>
       </MainContainer>
