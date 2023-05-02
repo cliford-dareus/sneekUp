@@ -5,14 +5,17 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dasboard";
+import Setting from './pages/Setting'
 import LockScreen from "./pages/LockScreen";
 import IdleTimer from "./lib/timer";
 import { useAppDispatch } from "./app/hooks";
 import { logout } from "./features/userSlice";
 import { useGetForcastsQuery, useGetWeatherQuery } from "./features/weatherApi";
-import Footer from "./components/Footer";
+import useChangeWallpaper from "./hooks/useChangeWallpaper";
+import BgImage from './assets/bg-purple.png';
 
 function App() {
+  const { wallpaper, changeWallpaper } = useChangeWallpaper(BgImage);
   const [isTimer, setIsTimer] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const Navigate = useNavigate();
@@ -47,18 +50,16 @@ function App() {
     <>
       <GlobalStyle />
       <MainContainer>
-        <>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/lockscreen" element={<LockScreen data={weather} />} />
-            <Route element={<ProtectedRoutes />}>
-              {/* Add a Layout for navbar */}
-              <Route path="/" element={<Dashboard data={weather} />} />
-            </Route>
-          </Routes>
-        </>
-        <Footer />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/lockscreen" element={<LockScreen data={weather} />} />
+          <Route element={<ProtectedRoutes />}>
+            {/* Add a Layout for navbar */}
+            <Route path="/" element={<Dashboard data={weather} wallpaper={wallpaper}/>} />
+            <Route path="/setting" element={<Setting changeWallpaper={changeWallpaper}/>} />
+          </Route>
+        </Routes>
       </MainContainer>
     </>
   );

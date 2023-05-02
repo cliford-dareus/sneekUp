@@ -6,12 +6,12 @@ import {
   Navigation,
   NavigationBackground,
 } from "./styles";
-import { Time } from "../../hooks/useGetTime";
+import useGetTime, { Time } from "../../hooks/useGetTime";
 import { useEffect, useRef } from "react";
 import { useCycle, useScroll } from "framer-motion";
 import { useDimensions } from "../../hooks/useDimensions";
 import Navigations from "../Navigation";
-import NavigationProfile from '../NavigationProfile';
+import NavigationProfile from "../NavigationProfile";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -35,7 +35,8 @@ const sidebar = {
   },
 };
 
-const index = ({ time }: { time: Time }) => {
+const index = () => {
+  const time = useGetTime();
   const [isOpen, toggleOpen] = useCycle(true, false);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
