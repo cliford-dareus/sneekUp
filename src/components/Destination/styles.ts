@@ -1,21 +1,19 @@
 import styled from "styled-components";
 import { Button, Section } from "../../pages/styled-components";
+import { Icon } from "../../pages/Dasboard/styles";
+import { motion } from "framer-motion";
 
 export const DestinationContainer = styled(Section)`
   height: auto;
   margin-top: 1em;
 `;
 
-interface FilterProps {
-  readonly isOpen: boolean;
-}
-
-export const DestinationFilter = styled.div<FilterProps>`
+export const DestinationFilter = styled(motion.div)`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  padding: 0.5em;
   margin-top: 1em;
-  height: ${(props) => (props.isOpen ? "150px" : "40px")};
 `;
 
 export const DestinationFilterTop = styled.div`
@@ -35,6 +33,7 @@ export const DestinationFilterButtonContainer = styled.div`
 
 export const FilterButton = styled(Button)`
   font-size: 0.9rem;
+  padding-inline: 1em;
   color: whitesmoke;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
@@ -42,9 +41,20 @@ export const FilterButton = styled(Button)`
   backdrop-filter: blur(5.6px);
   -webkit-backdrop-filter: blur(5.6px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+
+  position: relative;
 `;
 
-export const DestinationCardContainer = styled.div`
+export const FilterButtonIndicator = styled(Icon)`
+  position: absolute;
+  top: -0.6em;
+  right: 0;
+  font-size: 1rem;
+  background-color: red;
+  border-radius: 50%;
+`;
+
+export const DestinationCardContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -54,11 +64,11 @@ export const DestinationCardContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     /* justify-content: space-between; */
-    height: calc(250px * 2);
+    height: calc(250px * 2 + 2em);
   }
 `;
 
-export const DestinationCard = styled.div`
+export const DestinationCard = styled(motion.div)`
   position: relative;
   height: 190px;
   /* border: 1px solid rgba(255, 255, 255, 0.3); */
@@ -67,6 +77,8 @@ export const DestinationCard = styled.div`
   overflow: hidden;
   isolation: isolate;
   background-color: #ccc;
+  filter: grayscale(100%);
+  cursor: pointer;
 
   img {
     position: absolute;

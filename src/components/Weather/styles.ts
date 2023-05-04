@@ -62,18 +62,18 @@ export const DashboardWeather = styled.div`
   }
 `;
 
-export const WeatherContainer = styled.div`
+export const WeatherContainer = styled(motion.div)`
   margin-top: auto;
 `;
 
-export const WeatherIcon = styled(Icon)`
+export const WeatherIcon = styled(motion.span)`
   position: absolute;
-  width: 150px;
-  top: 0.2em;
-  right: 0.2em;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  right: 0;
 
   @media screen and (min-width: 800px) {
-    top: 0;
     width: 200px;
     object-fit: cover;
     font-size: clamp(9rem, 20vw, 14rem);

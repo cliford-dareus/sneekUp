@@ -2,27 +2,28 @@ import React, { useEffect, useState } from "react";
 import WeatherSection from "../../components/Weather";
 import DestinationSection from "../../components/Destination";
 import GameSection from "../../components/GameSection";
-import { DashboardContainer, DashboardHeader, Icon } from "./styles";
+import Header from "../../components/Header";
+import { DashboardContainer } from "./styles";
 import useGetTime from "../../hooks/useGetTime";
-import { RiMenu4Line } from "react-icons/ri";
+import Footer from "../../components/Footer";
 
-const index = ({ data, forecasts }: { data: any; forecasts: any }) => {
+const index = ({ data, wallpaper }: { data: any, wallpaper: any }) => {
   const time = useGetTime();
+  const [bg, setBg ] = useState(null);
+
+  useEffect(() => {
+    setBg(wallpaper?.image)
+  }, [wallpaper])
 
   return (
-    <DashboardContainer>
-      <DashboardHeader>
-        <span>{time.day}</span>
-        <Icon>
-          <RiMenu4Line />
-        </Icon>
-        {/* Maybe add a Music player in the header */}
-      </DashboardHeader>
-      <WeatherSection time={time} data={data} forecasts={forecasts} />
+    <DashboardContainer style={{ backgroundImage: `url(${bg})` }}>
+      <Header />
+      <WeatherSection time={time} data={data} />
       <GameSection />
       <DestinationSection />
+      <Footer />
     </DashboardContainer>
-  );             
+  );
 };
 
 export default index;

@@ -16,6 +16,10 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Poppins', sans-serif;
         background-color: #110e0e;
     }
+
+    a {
+        color: inherit;
+    }
 `;
 
 

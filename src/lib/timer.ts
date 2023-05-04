@@ -40,6 +40,7 @@ class IdleTimer {
 
       if (expiredTime < Date.now()) {
         if (this.onTimeOut) {
+          // console.log('running')
           this.onTimeOut();
           // this.cleanUp();
         }
@@ -48,7 +49,7 @@ class IdleTimer {
   }
 
   updateExpiredTime() {
-    console.log('user active')
+    // console.log('user active')
     if (this.timeoutTracker) {
       clearTimeout(this.timeoutTracker);
     }

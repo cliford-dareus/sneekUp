@@ -1,5 +1,5 @@
 import Bahamas from "../../assets/bahamas.jpg";
-import Ibiza from '../../assets/ibiza.jpg';
+import Ibiza from '../../assets/bg/ibiza.jpg';
 
 export const destinations = [
   {
