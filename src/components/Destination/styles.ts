@@ -77,6 +77,8 @@ export const DestinationCard = styled(motion.div)`
   overflow: hidden;
   isolation: isolate;
   background-color: #ccc;
+  filter: grayscale(100%);
+  cursor: pointer;
 
   img {
     position: absolute;

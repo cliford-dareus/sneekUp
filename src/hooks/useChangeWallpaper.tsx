@@ -19,20 +19,8 @@ const useChangeWallpaper = (image: any) => {
         darkMode,
       })
     );
-
     setWallPaper(JSON.parse(localStorage.getItem("setting")!));
   };
-
-  useEffect(() => {
-    console.log("setUp");
-    const setting = localStorage.setItem(
-      "setting",
-      JSON.stringify({
-        image,
-        darkMode: false,
-      })
-    );
-  }, []);
 
   return {
     wallpaper,

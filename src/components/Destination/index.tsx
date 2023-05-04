@@ -156,6 +156,7 @@ const index = () => {
                   },
                 },
               }}
+              whileHover={{ filter: 'grayscale(25%)'}}
             >
               <img src={destination.image} alt="" />
               <div>

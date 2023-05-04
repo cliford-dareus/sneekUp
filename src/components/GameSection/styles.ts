@@ -19,9 +19,9 @@ export const GameCardInner = styled(motion.div)`
 `;
 
 export const GameCard = styled(motion.div)`
-  /* max-height: 500px; */
-  height: 400px;
-  min-width: 260px;
+  height: 350px;
+  min-width: 250px;
+  width: 50%;
   padding: 1em;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -30,14 +30,13 @@ export const GameCard = styled(motion.div)`
   overflow: hidden;
   cursor: pointer;
 
-  /* &:hover div:nth-of-type(1){
-    background-size: 120% ;
-  } */
+  p,
+  span {
+    font-size: 0.8rem;
+  }
 
-
-  @media screen and (min-width: 760px) {
-    min-width: calc(100% / 4);
-    height: 35vw;
+  @media screen and (min-width: 1140px) {
+    min-width: calc(100% / 5);
   }
 `;
 
