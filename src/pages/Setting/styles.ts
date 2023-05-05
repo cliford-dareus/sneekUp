@@ -2,13 +2,7 @@ import styled from "styled-components";
 import { PageContainer } from "../styled-components";
 import { motion } from "framer-motion";
 
-export const SettingContainer = styled(PageContainer)`
-  background-blend-mode: multiply;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #333;
-`;
+export const SettingContainer = styled(PageContainer)``;
 
 export const SettingContents = styled.section`
   padding: 1em;
@@ -40,7 +34,7 @@ export const ModeSwitch = styled(motion.span)`
   align-items: center;
   padding: 5px;
 
-  &[data-isOn="true"] {
+  &[data-ison="true"] {
     justify-content: flex-end;
   }
 `;

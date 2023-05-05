@@ -7,21 +7,14 @@ import { DashboardContainer } from "./styles";
 import useGetTime from "../../hooks/useGetTime";
 import Footer from "../../components/Footer";
 
-const index = ({ data, wallpaper }: { data: any, wallpaper: any }) => {
+const index = ({data}: {data: any}) => {
   const time = useGetTime();
-  const [bg, setBg ] = useState(null);
-
-  useEffect(() => {
-    setBg(wallpaper?.image)
-  }, [wallpaper])
 
   return (
-    <DashboardContainer style={{ backgroundImage: `url(${bg})` }}>
-      <Header />
+    <DashboardContainer>
       <WeatherSection time={time} data={data} />
       <GameSection />
       <DestinationSection />
-      <Footer />
     </DashboardContainer>
   );
 };

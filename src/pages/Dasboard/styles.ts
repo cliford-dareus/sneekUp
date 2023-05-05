@@ -10,9 +10,5 @@ export const Icon = styled.span`
 `;
 
 export const DashboardContainer = styled(PageContainer)`
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #333;
-  background-blend-mode: multiply;
+  
 `;

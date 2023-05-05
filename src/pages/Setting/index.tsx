@@ -32,14 +32,12 @@ const index = ({
     image: null,
   });
   const [width, setWidth] = useState<number>(0);
-  const [isOn, setIsOn] = useState(false);
+  const [isOn, setIsOn] = useState(wallpaper.darkMode);
   const carouselRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const handleFiles = (e: ChangeEvent<HTMLInputElement>) => {
     setFile({ image: e?.target?.files![0] });
   };
-
-  //   console.log(file)
 
   const toggleSwitch = () => setIsOn(!isOn);
 
@@ -55,15 +53,13 @@ const index = ({
   }, []);
 
   return (
-    <SettingContainer style={{ backgroundImage: `url(${wallpaper.image})` }}>
-      <Header />
-
+    <SettingContainer>
       <SettingContents>
         <SettingDarkMode>
           <span>Mode</span>
           <div>
             <span>Light</span>
-            <ModeSwitch onClick={toggleSwitch} data-isOn={isOn}>
+            <ModeSwitch onClick={toggleSwitch} data-ison={isOn}>
               <SwitchHandle layout transition={spring}></SwitchHandle>
             </ModeSwitch>
           </div>
@@ -96,8 +92,6 @@ const index = ({
           </SettingWallpaperForm>
         </SettingWallpaper>
       </SettingContents>
-
-      <Footer />
     </SettingContainer>
   );
 };
