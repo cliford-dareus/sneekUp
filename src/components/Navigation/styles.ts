@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Navigation = styled(motion.ul)`
@@ -9,10 +10,15 @@ export const Navigation = styled(motion.ul)`
 `;
 
 export const NavigationItem = styled(motion.li)`
+  padding: .5em;
   list-style-type: none;
   color: whitesmoke;
   pointer-events: all;
   cursor: pointer;
+`;
+
+export const NavigationItemLink = styled(motion(Link))`
+  
 `;
 
 export const NavigationProfile = styled(motion.div)`

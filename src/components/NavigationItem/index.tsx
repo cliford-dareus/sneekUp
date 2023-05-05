@@ -1,7 +1,8 @@
 import React from "react";
-import { NavigationItem } from "../Navigation/styles";
+import { NavigationItem, NavigationItemLink } from "../Navigation/styles";
 import { Link } from "react-router-dom";
 import { INavItem } from "../Navigation";
+import { motion } from "framer-motion";
 
 const variants = {
   open: {
@@ -20,15 +21,25 @@ const variants = {
   },
 };
 
-const index = ({ data}: { data: INavItem}) => {
+const index = ({ data }: { data: INavItem }) => {
   return (
     <NavigationItem
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       key={data.id}
+      layout
     >
-        <Link to={`${data.to}`}>{data.title}</Link> 
+      <NavigationItemLink
+        variants={{
+          open: { pointerEvents: "all" },
+          closed: { pointerEvents: "none" },
+        }}
+        layout
+        to={`${data.to}`}
+      >
+        {data.title}
+      </NavigationItemLink>
     </NavigationItem>
   );
 };

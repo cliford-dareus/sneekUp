@@ -44,8 +44,8 @@ const variants = {
 const index = () => {
   return (
     <Navigation variants={variants}>
-      {links.map((data, index) => (
-        <NavigationItem data={data}/>
+      {links.map((data) => (
+        <NavigationItem key={data.id} data={data}/>
       ))}
     </Navigation>
   );

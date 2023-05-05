@@ -59,6 +59,7 @@ const index = () => {
         animate={isOpen ? "open" : "closed"}
         custom={height}
         ref={containerRef}
+        layout
       >
         <MenuToggle
           variants={{
@@ -74,7 +75,7 @@ const index = () => {
         <Navigations />
         <NavigationProfile />
 
-        <NavigationBackground variants={sidebar} />
+        <NavigationBackground variants={sidebar} layout/>
       </Navigation>
       {/* Maybe add a Music player in the header */}
     </DashboardHeader>
