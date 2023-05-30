@@ -30,7 +30,7 @@ const index = ({
     image: null,
   });
   const [width, setWidth] = useState<number>(0);
-  const [isOn, setIsOn] = useState(wallpaper.darkMode);
+  const [isOn, setIsOn] = useState(wallpaper?.darkMode);
   const carouselRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const handleFiles = (e: ChangeEvent<HTMLInputElement>) => {

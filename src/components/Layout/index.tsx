@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
-import { LayoutContainer } from './styles';
+import { LayoutContainer, Main } from './styles';
 
 const index = ({wallpaper }: {wallpaper: any }) => {
     const [bg, setBg ] = useState(null);
@@ -14,9 +14,9 @@ const index = ({wallpaper }: {wallpaper: any }) => {
   return (
     <LayoutContainer style={{ backgroundImage: `url(${bg})` }}>
         <Header/>
-        <main >
+        <Main >
             <Outlet />
-        </main>
+        </Main>
         <Footer />
     </LayoutContainer>
   )
